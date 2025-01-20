@@ -1,5 +1,11 @@
-import { Commitment, Connection, Keypair, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js"
-import wallet from "../wba-wallet.json"
+import {
+  Commitment,
+  Connection,
+  Keypair,
+  LAMPORTS_PER_SOL,
+  PublicKey,
+} from "@solana/web3.js";
+import wallet from "../wallet.json";
 import { getOrCreateAssociatedTokenAccount, transfer } from "@solana/spl-token";
 
 // We're going to import our keypair from the wallet file
@@ -10,19 +16,43 @@ const commitment: Commitment = "confirmed";
 const connection = new Connection("https://api.devnet.solana.com", commitment);
 
 // Mint address
-const mint = new PublicKey("<mint address>");
+const mint = new PublicKey("37ABqiPxq5mQWLUKYN7oaHkv2qdZtq6DHiwybwSBbwej");
 
 // Recipient address
-const to = new PublicKey("<receiver address>");
+const to = new PublicKey("EEbPMMHRTedC9xRpocYDRRDdiQmEpeY4MQj4E3jYWbZA");
 
 (async () => {
-    try {
-        // Get the token account of the fromWallet address, and if it does not exist, create it
+  try {
+    // Get the token account of the fromWallet address, and if it does not exist, create it
+    let sourceTokenAccount = await getOrCreateAssociatedTokenAccount(
+      connection,
+      keypair,
+      mint,
+      keypair.publicKey
+    );
 
-        // Get the token account of the toWallet address, and if it does not exist, create it
+    // console.log(
+    //   `The From ATA address ${sourceTokenAccount.address.toBase58()}`
+    // );
+    // Get the token account of the toWallet address, and if it does not exist, create it
 
-        // Transfer the new token to the "toTokenAccount" we just created
-    } catch(e) {
-        console.error(`Oops, something went wrong: ${e}`)
-    }
+    let toTokenAccount = await getOrCreateAssociatedTokenAccount(
+      connection,
+      keypair,
+      mint,
+      to
+    );
+
+    // console.log(
+    //     `The To ATA address ${toTokenAccount.address.toBase58()}`
+    //   );
+
+    // Transfer the new token to the "toTokenAccount" we just created
+
+    let trx = await transfer(connection,keypair,sourceTokenAccount.address,toTokenAccount.address,keypair.publicKey,1);
+    console.log(`The transaction ${trx}`);
+
+  } catch (e) {
+    console.error(`Oops, something went wrong: ${e}`);
+  }
 })();
