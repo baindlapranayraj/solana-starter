@@ -1,0 +1,26 @@
+{
+  "name": "Brahma",
+  "symbol": "BRMA",
+  "description": "I am the creater of everything.",
+  "image": "https://lavender-worthy-duck-16.mypinata.cloud/ipfs/bafkreidfbktxftbnkxdf5yqnkejs6254z4mkvy3rqoal4oowhhpavff6te",
+  "attributes": [
+    { "trait_type": "Gender", "value": "Male" },
+    { "trait_type": "Type", "value": "Green" },
+    { "trait_type": "Expression", "value": "Peace" }
+  ],
+  "properties": {
+    "files": [
+      {
+        "type": "image/png",
+        "uri": "https://lavender-worthy-duck-16.mypinata.cloud/ipfs/bafkreidfbktxftbnkxdf5yqnkejs6254z4mkvy3rqoal4oowhhpavff6te"
+      }
+    ]
+  },
+  "creators": [
+    {
+      "address": "12r4uFpQHVvVfX3qpAxHhddExdGMecFSZYPcVhxRPZNm",
+      "verified": true,
+      "share": 100
+    }
+  ]
+}

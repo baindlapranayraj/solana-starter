@@ -12,7 +12,7 @@ const connection = new Connection(clusterApiUrl("devnet"), commitment);
 const token_decimals = 1_000_000n;
 
 // Mint address
-const mint = new PublicKey("37ABqiPxq5mQWLUKYN7oaHkv2qdZtq6DHiwybwSBbwej");
+const mint = new PublicKey("GPwcteaPMn4Pus2BtTJ7Drt8XU8xT29GjvKhcnNRQpHX");
 
 (async () => {
     try {
